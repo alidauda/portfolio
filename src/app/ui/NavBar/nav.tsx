@@ -8,13 +8,6 @@ export default function NavBar() {
         <li>
           <Link href='/'>Home</Link>
         </li>
-        <li>
-          <Link href='#'> blog</Link>
-        </li>
-        <li>
-          {' '}
-          <Link href='#'> Cook </Link>{' '}
-        </li>
       </ul>
       <div>
         {' '}
