@@ -40,14 +40,14 @@ export default function Tools() {
   const [images, setImages] = useState(imagesArr);
   return (
     <motion.ul
-      className='flex gap-3 flex-wrap'
+      className='grid  gap-3 grid-cols-3 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2'
       variants={container}
       initial='hidden'
       animate='visible'
     >
       {images.map((image) => (
         <motion.li
-          className='p-4 w-28 h-28 flex justify-center items-center glass'
+          className='p-4  h-28 flex justify-center items-center glass'
           key={image}
           variants={item}
           whileHover={{ scale: 1.1 }}
