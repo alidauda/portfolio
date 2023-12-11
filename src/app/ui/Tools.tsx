@@ -1,5 +1,8 @@
+'use client';
 import Image from 'next/image';
-const images = [
+import { motion, Reorder } from 'framer-motion';
+import { useState } from 'react';
+const imagesArr = [
   '/firebase-1.svg',
   '/logo-javascript.svg',
   '/next-js.svg',
@@ -13,30 +16,52 @@ const images = [
   '/vercel.svg',
   '/github-icon.svg',
 ];
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 export default function Tools() {
+  const [images, setImages] = useState(imagesArr);
   return (
-    <div className='flex gap-3 flex-wrap'>
+    <motion.ul
+      className='flex gap-3 flex-wrap'
+      variants={container}
+      initial='hidden'
+      animate='visible'
+    >
       {images.map((image) => (
-        <div className='relative group cursor-pointer' key={image}>
-          <div className='absolute -inset-1 bg-gradient-to-r from-red-600 to-violet-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200'></div>
-          <div className='relative px-7 py-6  ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start xl:space-x-6 space-x-10 '>
-            <div className='space-y-2'>
-              <div
-                key={image}
-                className='p-4 w-28 h-28 flex justify-center items-center glass'
-              >
-                <Image
-                  src={image}
-                  width={100}
-                  height={100}
-                  alt='this is a logo'
-                  className=' block'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <motion.li
+          className='p-4 w-28 h-28 flex justify-center items-center glass'
+          key={image}
+          variants={item}
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+        >
+          <Image
+            src={image}
+            width={100}
+            height={100}
+            alt='this is a logo'
+            className=' block'
+          />
+        </motion.li>
       ))}
-    </div>
+    </motion.ul>
   );
 }
