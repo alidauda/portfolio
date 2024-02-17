@@ -12,18 +12,17 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: {
-      text: '#111208',
-      background: '#fafaf5',
-      primary: '#aab757',
-      secondary: '#add49b',
-      accent: '#88c577',
-    },
-
     extend: {
       fontFamily: {
         sans: ['var(--font-oxygen)'],
         mono: ['var(--font-roboto-mono)'],
+      },
+      colors: {
+        text: '#111208',
+        background: '#fafaf5',
+        primary: '#aab757',
+        secondary: '#add49b',
+        accent: '#88c577',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
